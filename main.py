@@ -9,16 +9,17 @@ def argument_parser():
     documentation: parse arguments to script
     """
     parser = argparse.ArgumentParser(description='select country..')
-    parser.add_argument("-c","--country",help="Choose a country by full name or choose ALL",type=str, required=True)
-    # parser.add_argument("-k","--key",help="quandl API key",type=str)
+    parser.add_argument("-c","--country",help="Choose a country by full name or choose All",type=str, required=True)
     args = parser.parse_args()
     return args
 
 
 def main(arguments):
+    country_filter = arguments.country
     print('Getting data...')
     main_database = acq.get_database()
-    jobs_database = acq.get_jobs()
+    jobs_list = acq.job_ids(main_database)
+    jobs_database = acq.get_jobs(jobs_list)
     countries_database = acq.get_countries()
 
     print('Cleaning data...')
@@ -27,8 +28,7 @@ def main(arguments):
 
     print('Preparing the database')
     final_database = wra.final_table(main_database_clean, jobs_database, countries_database_clean)
-    reporting = rep.report(final_database, arguments)
-    rep.to_csv(reporting)
+    rep.report(final_database, country_filter)
 
     print('Reporting complete!')
 

@@ -11,7 +11,7 @@ def get_database():
     The file must be called raw_data_project_m1.db and has to be in the data folder.
     """
     print('connecting to the database...')
-    db_path = '../data/raw_data_project_m1.db'
+    db_path = 'data/raw_data_project_m1.db' #'../data/raw_data_project_m1.db'
     conn_str = f'sqlite:///{db_path}'
     engine = create_engine(conn_str)
     table_names = pd.read_sql_query("SELECT name FROM sqlite_master WHERE type='table'", engine)
@@ -74,7 +74,7 @@ def get_countries():
     country_ids = countries_table[1].append(countries_table[3]).append(countries_table[5]).append(
         countries_table[7]).append(countries_table[10]).reset_index(drop=True)
 
-    full_countries_list = pd.DataFrame({'Country_Name': country_names, 'Country_ID': country_ids})
+    full_countries_list = pd.DataFrame({'Country_Name': country_names, 'country_code': country_ids})
     print('countries retrieved!')
 
     return full_countries_list

@@ -1,16 +1,39 @@
-from p_acquisition import m_acquisition
-from p_wrangling import m_wrangling
-import pandas as pd
+import argparse
+from p_acquisition import m_acquisition as acq
+from p_wrangling import m_wrangling as wra
+from p_reporting import m_reporting as rep
 
 
-#print('Select country, or choose ALL')
-#country_filter = input()
+def argument_parser():
+    """
+    documentation: parse arguments to script
+    """
+    parser = argparse.ArgumentParser(description='select country..')
+    parser.add_argument("-c","--country",help="Choose a country by full name or choose ALL",type=str, required=True)
+    # parser.add_argument("-k","--key",help="quandl API key",type=str)
+    args = parser.parse_args()
+    return args
 
 
-def main():
+def main(arguments):
+    print('Getting data...')
+    main_database = acq.get_database()
+    jobs_database = acq.get_jobs()
+    countries_database = acq.get_countries()
 
+    print('Cleaning data...')
+    main_database_clean = wra.db_cleaning(main_database)
+    countries_database_clean = wra.countries_clean(countries_database)
 
+    print('Preparing the database')
+    final_database = wra.final_table(main_database_clean, jobs_database, countries_database_clean)
+    reporting = rep.report(final_database, arguments)
+    rep.to_csv(reporting)
+
+    print('Reporting complete!')
 
 
 if __name__ == '__main__':
+    args = argument_parser()
+    main(args)
 

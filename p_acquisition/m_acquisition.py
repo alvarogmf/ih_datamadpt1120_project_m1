@@ -74,7 +74,7 @@ def get_countries():
     country_ids = countries_table[1].append(countries_table[3]).append(countries_table[5]).append(
         countries_table[7]).append(countries_table[10]).reset_index(drop=True)
 
-    full_countries_list = pd.DataFrame({'Country Name': country_names, 'Country ID': country_ids})
+    full_countries_list = pd.DataFrame({'Country_Name': country_names, 'Country_ID': country_ids})
     print('countries retrieved!')
 
     return full_countries_list

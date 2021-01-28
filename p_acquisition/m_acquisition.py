@@ -11,7 +11,7 @@ def get_database():
     The file must be called raw_data_project_m1.db and has to be in the data folder.
     """
     print('connecting to the database...')
-    db_path = 'data/raw_data_project_m1.db' #'../data/raw_data_project_m1.db'
+    db_path = 'data/raw_data_project_m1.db'
     conn_str = f'sqlite:///{db_path}'
     engine = create_engine(conn_str)
     table_names = pd.read_sql_query("SELECT name FROM sqlite_master WHERE type='table'", engine)

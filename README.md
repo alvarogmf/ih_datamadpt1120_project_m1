@@ -1,9 +1,13 @@
 # Country Jobs Analysis
 
 ###### ih_datamadpt1120_project_m1
-___________________________
 
-Owner: Alvaro Gil
+<p align="left"><img src="https://cdn-images-1.medium.com/max/184/1*2GDcaeYIx_bQAZLxWM4PsQ@2x.png" width="80"></p>___________________________
+
+**Owner**: Alvaro Gil
+
+**Bootcamp**: Ironhack - Data Analytics Part Time Nov 2020
+
 ## Overview
 
 This script helps the user to retrieve and analyze the number of people for each country that works on a specific job.

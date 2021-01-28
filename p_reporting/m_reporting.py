@@ -17,7 +17,7 @@ def report(dataframe, country):
         print('ERROR: Country selected is not in Database')
 
 
-#def to_csv(dataframe):
+#def to_csv(dataframe): DEPRECATED!! NOT FOR USE ANYMORE!!
 #    """
 #    This function will convert the previous DF to a CSV and save it into the Output Folder
 #    """

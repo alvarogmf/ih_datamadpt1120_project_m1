@@ -33,7 +33,8 @@ def job_ids(merged_tables):
 
 def get_jobs(jobs_id):
     """
-    This functions connects to the API and extracts in a DF all the names of the Jobs listed in the function above.
+    This functions connects to the API and
+    extracts in a DF all the names of the Jobs listed in the function above.
     """
     print('Calling the api...')
     jobs_list = []
